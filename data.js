@@ -216,3 +216,11 @@ var FORMULAS = [
   ] }
 ];
 
+
+/* Lesson videos. One link per lesson (Google Drive: Anyone with the link, Viewer). Change a link here and rebuild. */
+var VIDEO_LINKS = {
+  product: 'https://drive.google.com/file/d/1b9in3mRudKWWcFuaPV45pYb-MiiiQLT7/view?usp=drivesdk',
+  quotient: 'https://drive.google.com/file/d/1b9in3mRudKWWcFuaPV45pYb-MiiiQLT7/view?usp=drivesdk',
+  derivatives: 'https://drive.google.com/file/d/1b9in3mRudKWWcFuaPV45pYb-MiiiQLT7/view?usp=drivesdk',
+  rates: 'https://drive.google.com/file/d/1b9in3mRudKWWcFuaPV45pYb-MiiiQLT7/view?usp=drivesdk'
+};

@@ -250,6 +250,13 @@
     var v = staffData.videos[id];
     if (v && /^[0-9a-f]{32}$/i.test(v.assetId || '')) return '<div class="screen has-video"><video src="/_blob/' + v.assetId + '" controls playsinline preload="metadata" data-video></video></div>';
     if (v && /^https:\/\//i.test(v.link || '')) return '<div class="screen"><a class="btn" href="' + esc(v.link) + '" target="_blank" rel="noopener">Watch the video ›</a></div>';
+    /* Lesson links kept in data.js (VIDEO_LINKS): a Google Drive link plays inside the page. */
+    var fixed = typeof VIDEO_LINKS === 'object' && VIDEO_LINKS[id];
+    if (fixed && /^https:\/\//i.test(fixed)) {
+      var drive = /drive\.google\.com\/file\/d\/([\w-]+)/.exec(fixed);
+      return drive ? '<div class="screen has-video"><iframe src="https://drive.google.com/file/d/' + drive[1] + '/preview" allow="autoplay; fullscreen" allowfullscreen title="Lesson video" style="width:100%;aspect-ratio:16/9;border:0;border-radius:10px"></iframe></div><p class="fine" style="text-align:center"><a href="' + esc(fixed) + '" target="_blank" rel="noopener">Video not playing? Open it in a new tab</a></p>' :
+        '<div class="screen"><a class="btn" href="' + esc(fixed) + '" target="_blank" rel="noopener">Watch the video ›</a></div>';
+    }
     /* GitHub version: a video file uploaded next to index.html plays right here. If there is no file, the note shows. */
     if (STANDALONE && VIDEO_FILES[id]) return '<div class="screen has-video"><video src="' + VIDEO_FILES[id] + '" controls playsinline preload="metadata" data-video data-video-file-local></video></div>';
     return NO_VIDEO;
